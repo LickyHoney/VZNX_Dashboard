@@ -51,6 +51,7 @@ This project focuses on **clarity**, **structure**, and **ease of use**, showcas
 
 ## 📂 Project Structure
 
+```bash
 src/
 ┣ components/
 ┃ ┣ Sidebar.tsx
@@ -68,10 +69,27 @@ src/
 ┣ utils.ts
 
 
-- `Sidebar` → Navigation between Dashboard, Projects, and Teams  
-- `ProjectDashboard` → Displays all projects with progress bars  
-- `ProjectDetails` → Manages individual project tasks  
-- `TeamOverview` → Displays workload per team member  
+
+### 📁 Folder & File Details
+
+- **components/** → Contains all reusable UI and logic components:
+  - `Sidebar.tsx` → Handles navigation between Dashboard, Teams, etc.  
+  - `ProjectDashboard.tsx` → Displays all projects with progress bars.  
+  - `ProjectCard.tsx` → Shows individual project details in the dashboard.  
+  - `ProjectDetails.tsx` → Displays selected project tasks with add/edit/delete functionality.  
+  - `TeamsOverview.tsx` → Shows team members with workload and color-coded capacity.  
+  - `AddTaskModal.tsx` → Modal to create or edit a task.  
+  - `ProjectModal.tsx` → Modal to create or edit a project.  
+- **App.tsx** → Main routing and layout structure.  
+- **App.css / index.css** → Contains base styles for layout and design.  
+- **main.tsx** → Entry point that renders the app to the DOM.  
+- **types.ts** → TypeScript interfaces for `Project`, `Task`, and other entities.  
+- **utils.ts** → Utility functions (e.g., `uid()` for unique ID generation).
+
+---
+
+Would you like me to integrate this section into your **complete README** (including the demo link and data persistence parts) so it’s ready to copy-paste?
+
 
 ---
 
@@ -108,7 +126,7 @@ This ensures your data remains available even after refreshing or closing the pa
 
 ## 🌐 Live Demo
 
-🔗 **[View Live Demo](https://statuesque-sawine-231e89.netlify.app)**
+🔗 **[View Live Demo](https://phenomenal-dieffenbachia-46bcc7.netlify.app)**
 
 
 
