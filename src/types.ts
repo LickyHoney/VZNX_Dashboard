@@ -16,4 +16,5 @@ export interface Project {
   status: ProjectStatus;
   description?: string;
   tasks: Task[];
+  lastUpdated?: string;
 }
