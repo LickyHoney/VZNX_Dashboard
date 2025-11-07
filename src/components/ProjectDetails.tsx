@@ -208,29 +208,77 @@ export default function ProjectDetails() {
     updateProject(updated);
   }
 
+//   function handleAddOrEditTask(task: Task) {
+//     let updatedTasks: Task[];
+
+//     if (editTask) {
+//       updatedTasks = project.tasks.map((t) => (t.id === task.id ? task : t));
+//     } else {
+//       updatedTasks = [...project.tasks, { ...task, id: uid() }];
+//     }
+
+//     const updated = { ...project, tasks: updatedTasks };
+//     updateProject(updated);
+//     setShowTaskModal(false);
+//     setEditTask(null);
+//   }
   function handleAddOrEditTask(task: Task) {
-    let updatedTasks: Task[];
+  let updatedTasks: Task[];
 
-    if (editTask) {
-      updatedTasks = project.tasks.map((t) => (t.id === task.id ? task : t));
-    } else {
-      updatedTasks = [...project.tasks, { ...task, id: uid() }];
-    }
-
-    const updated = { ...project, tasks: updatedTasks };
-    updateProject(updated);
-    setShowTaskModal(false);
-    setEditTask(null);
+  if (editTask) {
+    // Editing existing task
+    updatedTasks = project.tasks.map((t) => (t.id === task.id ? task : t));
+  } else {
+    // Adding new task
+    updatedTasks = [...project.tasks, { ...task, id: uid() }];
   }
 
-  function handleDeleteTask(taskId: string) {
-    if (!confirm("Delete this task?")) return;
-    const updated = {
-      ...project,
-      tasks: project.tasks.filter((t) => t.id !== taskId),
-    };
-    updateProject(updated);
-  }
+  // ✅ Recalculate progress after adding/editing a task
+  const completedCount = updatedTasks.filter((t) => t.completed).length;
+  const total = updatedTasks.length;
+  const progress = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+
+  const updated = {
+    ...project,
+    tasks: updatedTasks,
+    progress,
+    lastUpdated: new Date().toLocaleDateString(),
+  };
+
+  updateProject(updated);
+  setShowTaskModal(false);
+  setEditTask(null);
+}
+
+
+//   function handleDeleteTask(taskId: string) {
+//     if (!confirm("Delete this task?")) return;
+//     const updated = {
+//       ...project,
+//       tasks: project.tasks.filter((t) => t.id !== taskId),
+//     };
+//     updateProject(updated);
+//   }
+function handleDeleteTask(taskId: string) {
+  if (!confirm("Delete this task?")) return;
+
+  const updatedTasks = project.tasks.filter((t) => t.id !== taskId);
+
+  // ✅ Recalculate progress after deleting
+  const completedCount = updatedTasks.filter((t) => t.completed).length;
+  const total = updatedTasks.length;
+  const progress = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+
+  const updated = {
+    ...project,
+    tasks: updatedTasks,
+    progress,
+    lastUpdated: new Date().toLocaleDateString(),
+  };
+
+  updateProject(updated);
+}
+
 
   const completedTasks = project.tasks.filter((t) => t.completed).length;
   const totalTasks = project.tasks.length;
@@ -239,12 +287,19 @@ export default function ProjectDetails() {
   return (
     <div className="project-details-container p-4">
       {/* Back Button */}
-      <button
+      {/* <button
         className="btn btn-link text-decoration-none mb-3 text-dark fw-semibold"
         onClick={() => navigate(-1)}
       >
         ← Back to Dashboard
-      </button>
+      </button> */}
+      <button
+  className="btn btn-link text-primary text-decoration-underline mb-3 fw-semibold p-0"
+  onClick={() => navigate(-1)}
+>
+  ← Back to Dashboard
+</button>
+
 
       {/* Header */}
       <div className="mb-4">
@@ -259,12 +314,23 @@ export default function ProjectDetails() {
         <div className="card-body d-flex flex-wrap justify-content-between align-items-center">
           <div className="me-3 flex-grow-1">
             <p className="text-muted mb-1 fw-semibold small">Progress</p>
-            <div className="progress mb-1" style={{ height: "8px" }}>
+            {/* <div className="progress mb-1" style={{ height: "8px" }}>
               <div
                 className="progress-bar bg-dark"
                 style={{ width: `${project.progress}%` }}
               ></div>
-            </div>
+            </div> */}
+            <div className="progress" style={{ height: 15 }}>
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: `${project.progress}%` }}
+            aria-valuenow={project.progress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          />
+        </div>
+    
             <span className="fw-semibold small text-secondary">
               {project.progress}%
             </span>
@@ -289,7 +355,7 @@ export default function ProjectDetails() {
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h5 className="fw-bold text-dark mb-0">Tasks</h5>
         <button
-          className="btn btn-dark btn-sm px-3"
+          className="btn btn-primary"
           onClick={() => {
             setEditTask(null);
             setShowTaskModal(true);
@@ -357,13 +423,14 @@ export default function ProjectDetails() {
                     setShowTaskModal(true);
                   }}
                 >
-                  ✏️
+                  <i className="bi bi-pencil"></i>
                 </button>
                 <button
                   className="btn btn-sm btn-outline-danger"
                   onClick={() => handleDeleteTask(task.id)}
                 >
-                  🗑
+                  
+                  <i className="bi bi-trash"></i>
                 </button>
               </div>
             </div>

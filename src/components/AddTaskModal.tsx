@@ -55,7 +55,7 @@ export default function AddTaskModal({ show, onHide, onSave, taskToEdit }: Props
   >
     <div className="modal-dialog-centered">
       <div className="modal-content p-3">
-        <div className="modal-header border-0 pb-0">
+        {/* <div className="modal-header border-0 pb-0">
           <h5 className="modal-title">
             {taskToEdit ? "Edit Task" : "Add New Task"}
           </h5>
@@ -65,7 +65,21 @@ export default function AddTaskModal({ show, onHide, onSave, taskToEdit }: Props
             aria-label="Close"
             onClick={onHide}
           />
-        </div>
+        </div> */}
+           <div
+  className="modal-header border-0 bg-primary text-white rounded-top d-flex justify-content-between align-items-center"
+  style={{ margin: '-16px -16px 0 -16px', padding: '12px 20px', marginBottom: '12px' }}
+>
+  <h5 className="modal-title mb-0 text-white w-100 text-center">
+    {taskToEdit ? "Edit Task" : "Add New Task"}
+  </h5>
+  <button
+    type="button"
+    className="btn-close btn-close-white position-absolute end-0 me-3"
+    aria-label="Close"
+    onClick={onHide}
+  />
+</div>
         <div className="modal-body">
           <div className="mb-3">
             <label className="form-label">Task Name</label>

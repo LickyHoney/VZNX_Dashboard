@@ -60,7 +60,7 @@ import { uid } from "../utils";
 const SAMPLE: Project[] = [
   {
     id: uid(),
-    title: "Eco-Friendly Residential Complex",
+    title: "Residential Complex",
     progress: 75,
     startDate: "2023-01-15",
     endDate: "2024-06-30",
@@ -140,6 +140,90 @@ const SAMPLE: Project[] = [
 ];
 
 
+// export default function ProjectDashboard() {
+//   const [projects, setProjects] = useState<Project[]>([]);
+//   const [showModal, setShowModal] = useState(false);
+//   const [editProject, setEditProject] = useState<Project | null>(null);
+
+//   useEffect(() => {
+//     seedIfEmpty(SAMPLE);
+//     setProjects(loadProjects());
+//   }, []);
+
+//   function persist(next: Project[]) {
+//     setProjects(next);
+//     saveProjects(next);
+//   }
+
+//   function handleAdd() {
+//     setEditProject(null);
+//     setShowModal(true);
+//   }
+
+//   function handleSave(p: Project) {
+//     const exists = projects.find((x) => x.id === p.id);
+//     let next: Project[];
+//     if (exists) {
+//       next = projects.map((x) => (x.id === p.id ? p : x));
+//     } else {
+//       next = [p, ...projects];
+//     }
+//     persist(next);
+//     setShowModal(false);
+//   }
+
+//   function handleDelete(id: string) {
+//     if (!confirm("Delete this project?")) return;
+//     const next = projects.filter((p) => p.id !== id);
+//     persist(next);
+//   }
+
+//   function handleEdit(p: Project) {
+//     setEditProject(p);
+//     setShowModal(true);
+//   }
+
+//   return (
+//     <div className="container py-5 bg-light min-vh-100">
+//       <div className="app-header px-4">
+//         <div>
+//           <h2 className="fw-bold mb-1 text-dark">Project Dashboard</h2>
+//           <small className="text-muted">
+//             Manage all your architecture projects efficiently.
+//           </small>
+//         </div>
+//         <div>
+//           <button className="btn btn-primary" onClick={handleAdd}>
+//             + Add New Project
+//           </button>
+//         </div>
+//       </div>
+
+//       <div className="container-fluid p-4">
+//         <div className="row g-4">
+//           {projects.map((p) => (
+//             <div className="col-12 col-sm-6 col-lg-4" key={p.id}>
+//               <ProjectCard project={p} onEdit={handleEdit} onDelete={handleDelete} />
+//             </div>
+//           ))}
+//         </div>
+
+//         {projects.length === 0 && (
+//           <div className="text-center text-muted mt-5">
+//             No projects yet. Click "Add New Project" to create one.
+//           </div>
+//         )}
+//       </div>
+
+//       <ProjectModal
+//         show={showModal}
+//         onHide={() => setShowModal(false)}
+//         onSave={handleSave}
+//         projectToEdit={editProject ?? undefined}
+//       />
+//     </div>
+//   );
+// }
 export default function ProjectDashboard() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [showModal, setShowModal] = useState(false);
@@ -184,26 +268,34 @@ export default function ProjectDashboard() {
   }
 
   return (
-    <div>
-      <div className="app-header px-4">
+    <div className="dashboard-container">
+      {/* Header */}
+      <div className="dashboard-header shadow-sm">
         <div>
-          <h4 className="mb-0">Project Dashboard</h4>
-          <small className="text-muted">
+          <h2 className="fw-bold mb-1 text-white">Project Dashboard</h2>
+          <small className="text-light">
             Manage all your architecture projects efficiently.
           </small>
         </div>
         <div>
-          <button className="btn btn-primary" onClick={handleAdd}>
+          <button className="btn btn-light fw-semibold px-4" onClick={handleAdd}>
             + Add New Project
           </button>
         </div>
       </div>
 
-      <div className="container-fluid p-4">
+      {/* Main Content */}
+      <div className="dashboard-content container-fluid p-4">
         <div className="row g-4">
           {projects.map((p) => (
             <div className="col-12 col-sm-6 col-lg-4" key={p.id}>
-              <ProjectCard project={p} onEdit={handleEdit} onDelete={handleDelete} />
+              <div className="dashboard-card-wrapper">
+                <ProjectCard
+                  project={p}
+                  onEdit={handleEdit}
+                  onDelete={handleDelete}
+                />
+              </div>
             </div>
           ))}
         </div>

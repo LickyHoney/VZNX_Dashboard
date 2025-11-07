@@ -1,3 +1,41 @@
+// // src/components/Sidebar.tsx
+// import React from "react";
+// import { NavLink } from "react-router-dom";
+// import "bootstrap-icons/font/bootstrap-icons.css";
+// import "../index.css";
+
+// export default function Sidebar() {
+//   return (
+//     <div className="sidebar p-3 bg-white">
+//       {/* Header */}
+//       <div className="d-flex align-items-center mb-4 border-bottom pb-3">
+//         <i className="bi bi-buildings-fill text-primary fs-3 me-2"></i>
+//         <h5 className="fw-bold mb-0">VZNX Workspace</h5>
+//       </div>
+
+//       {/* Navigation */}
+//       <div className="list-group">
+//         <NavLink
+//           to="/"
+//           end
+//           className={({ isActive }) =>
+//             `list-group-item list-group-item-action ${isActive ? "active" : ""}`
+//           }
+//         >
+//           Project Dashboard
+//         </NavLink>
+//         <NavLink
+//           to="/team-overview"
+//           className={({ isActive }) =>
+//             `list-group-item list-group-item-action ${isActive ? "active" : ""}`
+//           }
+//         >
+//           Team Overview
+//         </NavLink>
+//       </div>
+//     </div>
+//   );
+// }
 // src/components/Sidebar.tsx
 import React from "react";
 import { NavLink } from "react-router-dom";
@@ -19,18 +57,25 @@ export default function Sidebar() {
           to="/"
           end
           className={({ isActive }) =>
-            `list-group-item list-group-item-action ${isActive ? "active" : ""}`
+            `list-group-item list-group-item-action d-flex align-items-center ${
+              isActive ? "active" : ""
+            }`
           }
         >
-          Projects
+          <i className="bi bi-speedometer2 me-2"></i>
+          Project Dashboard
         </NavLink>
+
         <NavLink
           to="/team-overview"
           className={({ isActive }) =>
-            `list-group-item list-group-item-action ${isActive ? "active" : ""}`
+            `list-group-item list-group-item-action d-flex align-items-center ${
+              isActive ? "active" : ""
+            }`
           }
         >
-          Team Overview
+          <i className="bi bi-people-fill me-2"></i>
+          Team 
         </NavLink>
       </div>
     </div>
