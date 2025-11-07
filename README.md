@@ -58,17 +58,15 @@ src/
 ┃ ┣ ProjectCard.tsx
 ┃ ┣ ProjectDashboard.tsx
 ┃ ┣ ProjectDetails.tsx
-┃ ┗ TeamsOverview.tsx
-┃ ┗ AddTaskModal.tsx
+┃ ┣ TeamsOverview.tsx
+┃ ┣ AddTaskModal.tsx
 ┃ ┗ ProjectModal.tsx
 ┣ App.css
 ┣ App.tsx
 ┣ index.css
-┗ main.tsx
+┣ main.tsx
 ┣ types.ts
-┣ utils.ts
-
-
+┗ utils.ts
 
 ### 📁 Folder & File Details
 
@@ -84,7 +82,7 @@ src/
 - **App.css / index.css** → Contains base styles for layout and design.  
 - **main.tsx** → Entry point that renders the app to the DOM.  
 - **types.ts** → TypeScript interfaces for `Project`, `Task`, and other entities.  
-- **utils.ts** → Utility functions (e.g., `uid()` for unique ID generation)
+- **utils.ts** → Utility functions for unique ID generation
 
 ## ⚙️ Installation & Setup
 
