@@ -67,6 +67,7 @@ src/
 ┣ main.tsx
 ┣ types.ts
 ┗ utils.ts
+```
 
 ### 📁 Folder & File Details
 
