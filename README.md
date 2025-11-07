@@ -84,14 +84,7 @@ src/
 - **App.css / index.css** → Contains base styles for layout and design.  
 - **main.tsx** → Entry point that renders the app to the DOM.  
 - **types.ts** → TypeScript interfaces for `Project`, `Task`, and other entities.  
-- **utils.ts** → Utility functions (e.g., `uid()` for unique ID generation).
-
----
-
-Would you like me to integrate this section into your **complete README** (including the demo link and data persistence parts) so it’s ready to copy-paste?
-
-
----
+- **utils.ts** → Utility functions (e.g., `uid()` for unique ID generation)
 
 ## ⚙️ Installation & Setup
 
