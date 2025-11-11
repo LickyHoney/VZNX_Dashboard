@@ -88,12 +88,12 @@ export default function AddTaskModal({ show, onHide, onSave, taskToEdit }: Props
                 onChange={(e) => setAssignee(e.target.value)}
               >
                 <option value="">Select assignee</option>
-                <option value="Sarah Chen">Sarah Chen</option>
-                <option value="Michael Rodriguez">Michael Rodriguez</option>
-                <option value="David Kim">David Kim</option>
-                <option value="Alex Johnson">Alex Johnson</option>
-                <option value="Maria Lopez">Maria Lopez</option>
-                <option value="James White">James White</option>
+                <option value="Sarah">Sarah</option>
+                <option value="Michael">Michael</option>
+                <option value="David">David</option>
+                <option value="Srini">Srini</option>
+                <option value="Maria">Maria</option>
+                <option value="James">James</option>
               </select>
             </div>
           </div>

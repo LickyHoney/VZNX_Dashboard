@@ -124,24 +124,34 @@ function handleDeleteTask(taskId: string) {
       : "#6c757d"; // grey
 
   return (
-    <div className="project-details-container p-4">
-      {/* Back Button */}
+
+  
+  <div className="dashboard-container">
+     {/* Back Button */}
+    <div className="container-fluid mt-3 px-4">
       <button
-        className="btn btn-link text-primary text-decoration-underline mb-3 fw-semibold p-0"
+        className="btn btn-link text-primary text-decoration-underline fw-semibold p-0 mb-3"
         onClick={() => navigate(-1)}
       >
         ← Back to Dashboard
       </button>
-
-      {/* Header */}
-      <div className="mb-4">
-        <h2 className="fw-bold text-dark">{project.title}</h2>
-        <span className="badge bg-primary-subtle text-primary fw-medium px-3 py-2">
-          {project.status || "In Progress"}
-        </span>
+    </div>
+    {/* Header */}
+    <div className="dashboard-header shadow-sm">
+      <div>
+        <h2 className="fw-bold mb-1 text-white">{project.title}</h2>
+        <small className="text-light">
+          View and manage all tasks under this project.
+        </small>
       </div>
+     
+    </div>
 
-      {/* Progress Section */}
+   
+
+    {/* Main Content */}
+    <div className="dashboard-content container-fluid p-4">
+      {/* Project Progress Card */}
       <div
         className="card border-2 shadow-sm mb-4 rounded-3"
         style={{ borderColor }}
@@ -182,9 +192,10 @@ function handleDeleteTask(taskId: string) {
         </div>
       </div>
 
-      {/* Tasks List */}
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h5 className="fw-bold text-dark mb-0">Tasks</h5>
+      {/* Tasks Section */}
+      <div className="row g-3">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3 className="fw-bold text-dark mb-0">Tasks</h3>
         <button
           className="btn btn-primary"
           onClick={() => {
@@ -195,81 +206,82 @@ function handleDeleteTask(taskId: string) {
           + Add Task
         </button>
       </div>
+        {totalTasks > 0 ? (
+          project.tasks.map((task) => (
+            <div className="col-12" key={task.id}>
+              <div
+                className={`task-card d-flex justify-content-between align-items-center p-3 rounded-3 border ${
+                  task.completed ? "bg-light" : "bg-white"
+                }`}
+                style={{ borderColor }}
+              >
+                <div>
+                  <div className="d-flex align-items-center gap-2">
+                    <input
+                      type="checkbox"
+                      checked={task.completed}
+                      onChange={() => toggleTask(task.id)}
+                      className="form-check-input"
+                    />
+                    <span
+                      className={`fw-semibold ${
+                        task.completed
+                          ? "text-decoration-line-through text-muted"
+                          : "text-dark"
+                      }`}
+                    >
+                      {task.title}
+                    </span>
+                  </div>
 
-      {totalTasks > 0 ? (
-        <div className="tasks-list">
-          {project.tasks.map((task) => (
-            <div
-              key={task.id}
-              className={`task-card d-flex justify-content-between align-items-center p-3 mb-2 rounded-3 ${
-                task.completed ? "bg-light" : "bg-white"
-              } border`}
-              style={{ borderColor }}
-            >
-              <div>
-                <div className="d-flex align-items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => toggleTask(task.id)}
-                    className="form-check-input"
-                  />
-                  <span
-                    className={`fw-semibold ${
-                      task.completed
-                        ? "text-decoration-line-through text-muted"
-                        : "text-dark"
-                    }`}
-                  >
-                    {task.title}
-                  </span>
-                </div>
-
-                {task.assignee && (
-                  <div className="d-flex align-items-center mt-1 gap-2">
-                    
-                    <small className="text-secondary">
+                  {task.assignee && (
+                    <small className="text-secondary ms-4">
                       Assigned to:{" "}
                       <span className="fw-semibold">{task.assignee}</span>
                     </small>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
 
-              <div className="d-flex align-items-center gap-2">
-                <button
-                  className="btn btn-sm btn-outline-secondary"
-                  onClick={() => {
-                    setEditTask(task);
-                    setShowTaskModal(true);
-                  }}
-                >
-                  <i className="bi bi-pencil"></i>
-                </button>
-                <button
-                  className="btn btn-sm btn-outline-danger"
-                  onClick={() => handleDeleteTask(task.id)}
-                >
-                  <i className="bi bi-trash"></i>
-                </button>
+                <div className="d-flex align-items-center gap-2">
+                  <button
+                    className="btn btn-sm btn-outline-secondary"
+                    onClick={() => {
+                      setEditTask(task);
+                      setShowTaskModal(true);
+                    }}
+                  >
+                    <i className="bi bi-pencil"></i>
+                  </button>
+                  <button
+                    className="btn btn-sm btn-outline-danger"
+                    onClick={() => handleDeleteTask(task.id)}
+                  >
+                    <i className="bi bi-trash"></i>
+                  </button>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
-      ) : (
-        <p className="text-muted">No tasks yet. Click “Add Task” to create one.</p>
-      )}
-
-      {/* Task Modal */}
-      <AddTaskModal
-        show={showTaskModal}
-        onHide={() => {
-          setShowTaskModal(false);
-          setEditTask(null);
-        }}
-        onSave={handleAddOrEditTask}
-        taskToEdit={editTask}
-      />
+          ))
+        ) : (
+          <div className="text-center text-muted mt-5">
+            No tasks yet. Click “Add Task” to create one.
+          </div>
+        )}
+      </div>
     </div>
+
+    {/* Task Modal */}
+    <AddTaskModal
+      show={showTaskModal}
+      onHide={() => {
+        setShowTaskModal(false);
+        setEditTask(null);
+      }}
+      onSave={handleAddOrEditTask}
+      taskToEdit={editTask}
+    />
+  </div>
+
+
   );
 }

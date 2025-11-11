@@ -11,6 +11,7 @@ interface Props {
 
 export default function ProjectModal({ show, onHide, onSave, projectToEdit }: Props) {
   const [title, setTitle] = useState("");
+  const [owner, setOwner] = useState("");
   const [progress, setProgress] = useState(0);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -20,6 +21,7 @@ export default function ProjectModal({ show, onHide, onSave, projectToEdit }: Pr
 
   useEffect(() => {
     if (projectToEdit) {
+      setOwner(projectToEdit.owner);
       setTitle(projectToEdit.title);
       setProgress(projectToEdit.progress);
       setStartDate(projectToEdit.startDate.slice(0, 10));
@@ -27,6 +29,7 @@ export default function ProjectModal({ show, onHide, onSave, projectToEdit }: Pr
       setStatus(projectToEdit.status);
     } else {
       setTitle("");
+      setOwner("");
       setProgress(0);
       setStartDate("");
       setEndDate("");
@@ -47,6 +50,7 @@ export default function ProjectModal({ show, onHide, onSave, projectToEdit }: Pr
       : {
           id: uid(),
           title,
+          owner,
           progress,
           startDate,
           endDate,
@@ -88,6 +92,15 @@ export default function ProjectModal({ show, onHide, onSave, projectToEdit }: Pr
               <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                className="form-control"
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Owner</label>
+              <input
+                value={owner}
+                onChange={(e) => setOwner(e.target.value)}
                 className="form-control"
               />
             </div>

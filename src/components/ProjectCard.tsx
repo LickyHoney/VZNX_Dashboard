@@ -18,8 +18,25 @@ export default function ProjectCard({ project, onEdit, onDelete }: Props) {
       ? "bg-info text-white"
       : "bg-secondary text-white";
 
+  const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Prevent click from triggering when clicking on buttons
+    const target = e.target as HTMLElement;
+    if (
+      target.closest("button") ||
+      target.closest(".btn") ||
+      target.tagName === "I"
+    ) {
+      return;
+    }
+    navigate(`/project/${project.id}`);
+  };
+
   return (
-    <div className="project-card card shadow-sm border-0 rounded-4 p-3 mb-3">
+    <div
+      className="project-card card shadow-sm border-0 rounded-4 p-3 mb-3"
+      style={{ cursor: "pointer" }}
+      onClick={handleCardClick}
+    >
       <div className="d-flex justify-content-between align-items-start mb-2">
         <h5 className="fw-bold mb-0 text-dark">{project.title}</h5>
         <div className={`badge ${badgeClass} px-3 py-2`}>{project.status}</div>
@@ -58,21 +75,21 @@ export default function ProjectCard({ project, onEdit, onDelete }: Props) {
       <div className="d-flex gap-2">
         <button
           className="btn btn-outline-secondary btn-sm"
-          onClick={() => onEdit(project)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onEdit(project);
+          }}
         >
           <i className="bi bi-pencil"></i> Edit
         </button>
         <button
           className="btn btn-outline-danger btn-sm"
-          onClick={() => onDelete(project.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(project.id);
+          }}
         >
           <i className="bi bi-trash"></i> Delete
-        </button>
-        <button
-          className="btn btn-primary btn-sm ms-auto"
-          onClick={() => navigate(`/project/${project.id}`)}
-        >
-          View Tasks
         </button>
       </div>
     </div>

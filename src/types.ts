@@ -9,6 +9,7 @@ export interface Task {
 
 export interface Project {
   id: string;
+  owner: string;
   title: string;
   progress: number; // 0-100
   startDate: string; // ISO date

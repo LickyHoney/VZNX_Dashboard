@@ -118,7 +118,7 @@ This ensures your data remains available even after refreshing or closing the pa
 
 ## 🌐 Live Demo
 
-🔗 **[View Live Demo](https://phenomenal-dieffenbachia-46bcc7.netlify.app)**
+🔗 **[View Live Demo](https://luminous-maamoul-7e91fa.netlify.app)**
 
 
 
