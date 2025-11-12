@@ -202,8 +202,30 @@ body {
 }
 
 /* Header section styling */
-.dashboard-header {
+.project-header {
   background: linear-gradient(90deg, #007bff, #6610f2);
+  color: white;
+  padding: 1.5rem 3rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.dashboard-header {
+  background: linear-gradient(90deg, #e7b1d7, #ed5880);
+  color: white;
+  padding: 1.5rem 3rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.teams-header {
+  background: linear-gradient(90deg, #e7bea8, #ef8453);
   color: white;
   padding: 1.5rem 3rem;
   margin-top: 0.5rem;
@@ -274,3 +296,74 @@ body {
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
 }
+
+.list-group-item {
+  border-left: 4px solid transparent; /* reserve space */
+}
+
+.list-group-item.active {
+  border-left: 4px solid #0d6efd;
+}
+
+/* Keep sidebar fixed width */
+.sidebar {
+  width: 220px;
+  min-width: 220px;
+}
+
+/* Common styles for all sidebar items */
+.sidebar-item {
+  width: 100%;
+  text-align: left;
+  border-left: 4px solid transparent;
+  box-sizing: border-box;
+}
+
+/* Dashboard active */
+.dashboard-tab.list-group-item.active {
+  background-color: #e7b1d7 !important; /* light blue */
+  border-left-color: #ed5880 !important;
+}
+
+/* Projects active */
+.projects-tab.list-group-item.active {
+  background-color:  #007bff !important; /* light green */
+  border-left-color: #6610f2 !important;
+}
+
+/* Team active */
+.team-tab.list-group-item.active {
+  background-color: #e7bea8 !important; /* light yellow */
+  border-left-color: #ef8453 !important;
+}
+
+/* Container around the search bar */
+.project-search-container {
+  width: 100%;
+  padding: 1.5rem 3rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px 20px 20px 20px;
+  padding: 0 15px; /* small side padding for responsiveness */
+}
+
+/* Search input styling */
+.project-search-container input.form-control {
+  width: 100%;
+  height: 45px; /* optional: slightly taller input */
+  border-radius: 8px; /* rounded corners */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.project-filters {
+  padding: 0 3rem;
+  margin-bottom: 1rem;
+}
+
+.project-filters .form-check-label {
+  font-weight: 500;
+  color: #333;
+}
+

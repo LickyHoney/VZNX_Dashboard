@@ -4,6 +4,7 @@ import ProjectDetails from "./components/ProjectDetails"
 import ProjectDashboard from "./components/ProjectDashboard";
 import TeamOverview from "./components/TeamsOverview";
 import "./index.css";
+import Dashboard from "./components/Dashboard";
 
 export default function App() {
   return (
@@ -15,7 +16,8 @@ export default function App() {
         {/* Main area switches pages */}
         <div className="flex-grow-1 bg-light">
           <Routes>
-            <Route path="/" element={<ProjectDashboard />} />
+            <Route path="/" element = {<Dashboard />} />
+            <Route path="/projects" element={<ProjectDashboard />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
             <Route path="/team-overview" element={<TeamOverview />} />
             <Route path="*" element={<Navigate to="/" replace />} />

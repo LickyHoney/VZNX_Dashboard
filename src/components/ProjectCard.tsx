@@ -6,9 +6,10 @@ interface Props {
   project: Project;
   onEdit: (p: Project) => void;
   onDelete: (id: string) => void;
+  onExport: (p: Project) => void;
 }
 
-export default function ProjectCard({ project, onEdit, onDelete }: Props) {
+export default function ProjectCard({ project, onEdit, onDelete, onExport }: Props) {
   const navigate = useNavigate();
 
   const badgeClass =
@@ -91,6 +92,10 @@ export default function ProjectCard({ project, onEdit, onDelete }: Props) {
         >
           <i className="bi bi-trash"></i> Delete
         </button>
+        <button className="btn btn-outline-primary btn-sm" onClick={(e) => {
+            e.stopPropagation();
+            onExport(project);
+          }}><i className="bi bi-box-arrow-up"></i></button>
       </div>
     </div>
   );

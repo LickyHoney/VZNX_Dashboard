@@ -49,12 +49,12 @@ export default function TeamOverview() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="container-fluid p-4">
       {/* Header */}
-      <div className="dashboard-header shadow-sm">
+      <div className="teams-header shadow-sm">
         <div>
-          <h2 className="fw-bold mb-1 text-white">Team Overview</h2>
-          <small className="text-light">
+          <h2 className="fw-bold mb-1 text-black">Team Overview</h2>
+          <small className="text-dark">
             Monitor team workload and task distribution
           </small>
         </div>

@@ -1,10 +1,11 @@
 export type ProjectStatus = "In Progress" | "Completed" | "On Hold";
 
+
 export interface Task {
   id: string;
   title: string;
   assignee?: string;
-  completed: boolean;
+  completed: boolean; 
 }
 
 export interface Project {
