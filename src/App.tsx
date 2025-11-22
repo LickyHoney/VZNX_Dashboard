@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import ProjectDetails from "./components/ProjectDetails"
-import ProjectDashboard from "./components/ProjectDashboard";
+import Projects from "./components/Projects";
 import TeamOverview from "./components/TeamsOverview";
 import "./index.css";
 import Dashboard from "./components/Dashboard";
@@ -17,7 +17,7 @@ export default function App() {
         <div className="flex-grow-1 bg-light">
           <Routes>
             <Route path="/" element = {<Dashboard />} />
-            <Route path="/projects" element={<ProjectDashboard />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/project/:id" element={<ProjectDetails />} />
             <Route path="/team-overview" element={<TeamOverview />} />
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,0 +1,90 @@
+import { Project } from "../types";
+import { uid } from "../utils";
+
+export const SAMPLE: Project[] = [
+  {
+    id: uid(),
+    owner: "Emma",
+    title: "Residential Complex",
+    progress: 75,
+    startDate: "2023-01-15",
+    endDate: "2024-06-30",
+    status: "In Progress",
+    description: "",
+    tasks: [
+      { id: uid(), title: "Site Survey", assignee: "Sarah", completed: true },
+      { id: uid(), title: "Architectural Design", assignee: "Michael", completed: false },
+      { id: uid(), title: "Structural Analysis", assignee: "David", completed: false },
+    ],
+  },
+  {
+    id: uid(),
+    owner: "Jukka",
+    title: "Urban Revitalization Project",
+    progress: 40,
+    startDate: "2023-03-01",
+    endDate: "2024-12-31",
+    status: "In Progress",
+    tasks: [
+      { id: uid(), title: "Site Demolition", assignee: "Srini", completed: true },
+      { id: uid(), title: "Utility Planning", assignee: "Maria", completed: false },
+      { id: uid(), title: "Landscape Design", assignee: "James", completed: false },
+    ],
+  },
+  {
+    id: uid(),
+    owner: "Laura",
+    title: "Sustainable Office Tower",
+    progress: 100,
+    startDate: "2022-09-01",
+    endDate: "2023-11-15",
+    status: "Completed",
+    tasks: [
+      { id: uid(), title: "Design Phase", assignee: "Srini", completed: true },
+      { id: uid(), title: "Construction", assignee: "Srini", completed: true },
+      { id: uid(), title: "Inspection", assignee: "Srini", completed: true },
+    ],
+  },
+  {
+    id: uid(),
+    owner: "Antti",
+    title: "Historic Building Restoration",
+    progress: 90,
+    startDate: "2023-05-20",
+    endDate: "2024-03-10",
+    status: "In Progress",
+    tasks: [
+      { id: uid(), title: "Structural Reinforcement", assignee: "David", completed: true },
+      { id: uid(), title: "Facade Restoration", assignee: "Michael", completed: true },
+      { id: uid(), title: "Interior Redesign", assignee: "Maria", completed: false },
+    ],
+  },
+  {
+    id: uid(),
+    owner: "Sofia",
+    title: "Community Cultural Center",
+    progress: 100,
+    startDate: "2023-02-10",
+    endDate: "2023-09-01",
+    status: "Completed",
+    tasks: [
+      { id: uid(), title: "Site Planning", assignee: "Sarah", completed: true },
+      { id: uid(), title: "Construction", assignee: "James", completed: true },
+      { id: uid(), title: "Art Installation", assignee: "David", completed: true },
+    ],
+  },
+  {
+    id: uid(),
+    owner: "Aino",
+    title: "Modular Housing Development",
+    progress: 60,
+    startDate: "2023-07-01",
+    endDate: "2024-08-01",
+    status: "In Progress",
+    tasks: [
+      { id: uid(), title: "Module Design", assignee: "Sarah", completed: true },
+      { id: uid(), title: "Prefabrication", assignee: "Maria", completed: false },
+      { id: uid(), title: "On-site Assembly", assignee: "David", completed: false },
+    ],
+  },
+];

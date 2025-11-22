@@ -29,6 +29,7 @@ export default function ProjectDetails() {
     saveProjects(next);
     setProjects(next);
     setProject(updated);
+    window.dispatchEvent(new Event("projectsUpdated"));
   }
 
 // ✅ Toggle task completion and recalculate progress
@@ -45,11 +46,13 @@ function toggleTask(taskId: string) {
   const total = updatedTasks.length;
   const completedCount = updatedTasks.filter((t) => t.completed).length;
   const progress = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+  const status = progress === 100 ? "Completed" : progress > 0 ? "In Progress" : "On Hold";
 
   const updated: Project = {
     ...p,
     tasks: updatedTasks,
     progress,
+    status,
     lastUpdated: new Date().toLocaleDateString(),
     id: p.id,
   };
@@ -137,7 +140,7 @@ function handleDeleteTask(taskId: string) {
       </button>
     </div>
     {/* Header */}
-    <div className="dashboard-header shadow-sm">
+    <div className="project-header shadow-sm">
       <div>
         <h2 className="fw-bold mb-1 text-white">{project.title}</h2>
         <small className="text-light">
