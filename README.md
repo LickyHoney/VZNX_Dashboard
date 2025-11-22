@@ -118,9 +118,8 @@ This ensures your data remains available even after refreshing or closing the pa
 
 ## 🌐 Live Demo
 
-🔗 **[View Live Demo](https://luminous-maamoul-7e91fa.netlify.app)**
 
-🔗 **[View Live Demo enhancement](https://merry-genie-ba0318.netlify.app)**
+🔗 **[View Live Demo](https://merry-genie-ba0318.netlify.app)**
 
 
 
