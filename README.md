@@ -1,6 +1,6 @@
-# 🏗️ VZNX Workspace Dashboard
+# 🏗️ Project Management Dashboard
 
-A clean and functional React-based prototype built for the **VZNX Technical Challenge** — designed to simplify how architecture studios manage their **projects**, **tasks**, and **teams**.  
+A clean and functional React-based prototype built for the design to simplify Project Management Prototype to manage their **projects**, **tasks**, and **teams**.  
 
 This project focuses on **clarity**, **structure**, and **ease of use**, showcasing how projects can be efficiently organized and tracked from start to finish.
 
@@ -89,7 +89,7 @@ src/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<your-username>/vznx-dashboard.git
+   git clone https://github.com/<your-username>/project_management_dashboard.git
    cd vznx-dashboard
 
 2. **Install Dependencies:**
