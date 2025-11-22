@@ -90,7 +90,7 @@ src/
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/<your-username>/project_management_dashboard.git
-   cd vznx-dashboard
+   cd project_management_dashboard
 
 2. **Install Dependencies:**
     ```bash
